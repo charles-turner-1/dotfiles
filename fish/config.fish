@@ -34,7 +34,7 @@ alias vimdiff="vim -d"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source ; conda deactivate 
+eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs

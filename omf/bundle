@@ -1,3 +1,5 @@
+package config
 package https://github.com/jhillyerd/plugin-git
+package spark
 theme bobthefish
 theme default

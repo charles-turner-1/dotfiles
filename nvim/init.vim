@@ -77,8 +77,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Toggle numbers (copy pasta)
-nnoremap <leader>nn :set nonumber norelativenumber<CR>
-nnoremap <leader>sn :set number relativenumber<CR>
+nnoremap <leader>nn :exec &nu==&rnu? "se nu!" : "se rnu!"<cr>
 
 set spelllang=en_gb
 autocmd BufNewFile,BufRead *.tex set spell
