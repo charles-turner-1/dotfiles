@@ -37,8 +37,8 @@ call plug#begin('~/.nvim/plugged')
 
 " Any valid git URL is allowed
 Plug 'https://github.com/itchyny/lightline.vim'
-
 Plug 'https://github.com/lervag/vimtex'
+
 let g:vimtex_fold_enabled=1
 let g:latex_view_method='skim'
 let g:vimtex_complete_close_braces=1
