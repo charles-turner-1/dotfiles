@@ -1,13 +1,16 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
+## gf status is-interactive
+#    Commands to run in interactive sessions can go here
+# end
 
 eval (/opt/homebrew/bin/brew shellenv)
+
 set COWPATH $COWPATH:$HOME/.cowsay
 set PATH $PATH:$HOME/bin
 set PATH $PATH:/usr/local/texlive/2022/bin/universal-darwin
 set PATH $PATH:/Users/ct6g18/Library/Python/3.10/bin
-set PATH /opt/local/bin:/opt/local/sbin:$PATH
+set PATH $PATH:/opt/local/bin:/opt/local/sbin
+set PATH $PATH:$HOME/.cargo/env
+
 
 set M_Path /Users/ct6g18/Python/ML_Projects
 
@@ -30,7 +33,7 @@ alias unimatrix="unimatrix -s 96 -a"
 
 alias vimdiff="vim -d"
 
-
+alias code="open -a 'Visual Studio Code'"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
