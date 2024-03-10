@@ -53,10 +53,22 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'https://github.com/lukas-reineke/indent-blankline.nvim'
+Plug 'https://github.com/tpope/vim-fugitive'
 
 " Initialize plugin system
 call plug#end()
 
+" Configure lightline to show git branch
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 vnoremap <Leader>p "_dP
 nnoremap \ve :Ve<CR><C-w>r
