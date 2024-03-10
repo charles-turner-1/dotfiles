@@ -1,4 +1,5 @@
 require("bitsnbobs.telescope")
+require("ibl").setup()
 
 P = function(v)
   print(vim.inspect(v))
