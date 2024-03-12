@@ -1,27 +1,30 @@
-set number
-set relativenumber
+lua vim.opt.number = true
+lua vim.opt.relativenumber = true
+lua vim.opt.incsearch = true
+lua vim.opt.ignorecase = true
+lua vim.opt.smartcase = true
+lua vim.opt.laststatus = 2
+lua vim.opt.guicursor = "i:block"
+lua vim.opt.hlsearch = false
+lua vim.opt.showmode = false
+lua vim.opt.wrap = true
+lua vim.opt.hidden = true
+lua vim.opt.scrolloff = 5
 
-set incsearch
-set ignorecase 
-set smartcase
-
-set laststatus=2
-set noshowmode
-set guicursor=i:block
-
-set nohlsearch
-
-set scrolloff=5
-set wrap
-set hidden
 
 " Change the current directory to the directory of the file in the buffer - useful for :find and stuff
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+lua vim.keymap.set({
+  { 'n', '<leader>cd', ':cd %:p:h<CR>:pwd<CR>' }
+})
 
 " Highlight current line with a light grey background
-set cursorline
-highlight CursorLine ctermbg=darkGrey guibg=darkGrey
+" set cursorline
+" highlight CursorLine ctermbg=darkGrey guibg=darkGrey
+lua vim.api.nvim_command(
+		'highlight CursorLine ctermbg=darkGrey guibg=darkGrey'
+)
 
+lua vim.opt.cursorline = true
 
 highlight Visual cterm=reverse ctermbg=NONE
 
