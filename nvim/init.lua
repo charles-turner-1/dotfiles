@@ -43,30 +43,13 @@ Plug('https://github.com/tpope/vim-fugitive')
 
 vim.call('plug#end')
 
---[[
-let g:vimtex_fold_enabled=1
-let g:latex_view_method='skim'
-let g:vimtex_complete_close_braces=1
 
-" lua vim.opt.fillchars = 'fold:\ '
+vim.g.vimtex_fold_enabled = 1
+vim.g.latex_view_method = 'skim'
+vim.g.vimtex_complete_close_braces = 1
 
-" Configure lightline to show git branch
+ -- vim.opt.fillchars = 'fold:\\ '    | Don't know what this does. Maybe something important
 
-]]--
-
---[[
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
-]]--
-
--- Set up lightline with the above configuration (let g:lightline = ...),
 
 vim.g.lightline = {
     active = {
