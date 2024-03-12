@@ -40,6 +40,7 @@ Plug('nvim-telescope/telescope-fzy-native.nvim')
 Plug('nvim-treesitter/nvim-treesitter')
 Plug('https://github.com/lukas-reineke/indent-blankline.nvim')
 Plug('https://github.com/tpope/vim-fugitive')
+Plug('https://github.com/neovim/nvim-lspconfig')
 
 vim.call('plug#end')
 
@@ -83,5 +84,9 @@ vim.api.nvim_command('autocmd FileType markdown,txt,tex setlocal spell')
 vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 0
 vim.opt.tabstop = 4
+
+require'lspconfig'.ruff_lsp.setup{}
+
+require("ruff")
 
 require("bitsnbobs")
