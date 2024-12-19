@@ -2,10 +2,10 @@
 vim.g.mapleader = "\\"
 
 -- buffers
-vim.keymap.set("n", "<leader>x", ":bd<cr>", {desc = "Delete buffer"})
+vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Delete buffer" })
 
 -- yank to clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]] , {desc = "Yank to system clipboard"})
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 
 -- black python formatting
 vim.keymap.set("n", "<leader>fmp", ":silent !black %<cr>")
@@ -13,9 +13,8 @@ vim.keymap.set("n", "<leader>fmp", ":silent !black %<cr>")
 vim.keymap.set("n", "<leader>cd", ":cd %:p:h<cr>:pwd<cr>")
 
 -- Increment & Decrement numbers
-vim.keymap.set("n", "++", "<c-a>", {desc = "Increment number"})
-vim.keymap.set("n", "--", "<c-x>", {desc = "Decrement number"})
-
+vim.keymap.set("n", "++", "<c-a>", { desc = "Increment number" })
+vim.keymap.set("n", "--", "<c-x>", { desc = "Decrement number" })
 
 -- window management
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically

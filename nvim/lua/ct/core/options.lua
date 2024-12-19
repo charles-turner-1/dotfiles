@@ -22,7 +22,6 @@ vim.opt.termguicolors = true -- enable true color support
 vim.opt.scrolloff = 8 -- minimum number of lines to keep above and below the cursor
 vim.opt.sidescrolloff = 8 --minimum number of columns to keep above and below the cursor
 
-
 vim.opt.splitright = true -- Split to the right by default
 vim.opt.splitbelow = true -- Split below by default
 
@@ -30,30 +29,28 @@ vim.opt.cursorline = true -- Cursor line
 
 vim.opt.clipboard:append("unnamedplus") -- Also yank to system clipboard by default
 
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-  pattern = "*.py",
-  callback = function()
-    vim.opt.textwidth = 79
-    vim.opt.colorcolumn = "79"
-  end
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*.py",
+	callback = function()
+		vim.opt.textwidth = 79
+		vim.opt.colorcolumn = "79"
+	end,
 }) -- python formatting
 
-
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-  pattern = {"*.js", "*.html", "*.css", "*.lua", "*.ts"},
-  callback = function()
-    vim.opt.tabstop = 2
-    vim.opt.softtabstop = 2
-    vim.opt.shiftwidth = 2
-  end
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*.js", "*.html", "*.css", "*.lua", "*.ts" },
+	callback = function()
+		vim.opt.tabstop = 2
+		vim.opt.softtabstop = 2
+		vim.opt.shiftwidth = 2
+	end,
 }) -- javascript formatting
 
 vim.api.nvim_create_autocmd("BufReadPost", {
-    pattern = "*",
-    callback = function()
-      if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
-        vim.cmd("normal! g`\"")
-      end
-    end
+	pattern = "*",
+	callback = function()
+		if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
+			vim.cmd('normal! g`"')
+		end
+	end,
 }) -- return to last edit position when opening files
-

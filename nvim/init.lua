@@ -1,6 +1,2 @@
-require('keymaps')
-require('options')
-require('plugins.lazy')
-require('plugins.keymaps')
-require('plugins.which-key')
-require('plugins.bufferline')
+require("ct.core")
+require("ct.lazy")
