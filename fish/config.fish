@@ -4,14 +4,17 @@
 
 eval (/opt/homebrew/bin/brew shellenv)
 
-set PATH $PATH:$HOME/bin
-set PATH $PATH:/usr/local/texlive/2022/bin/universal-darwin
-set PATH $PATH:/Users/ct6g18/Library/Python/3.10/bin
-set PATH $PATH:/opt/local/bin:/opt/local/sbin
-set PATH $PATH:$HOME/.cargo/env
+set -x PATH \
+    $HOME/bin \
+    /usr/local/texlive/2022/bin/universal-darwin \
+    /Users/ct6g18/Library/Python/3.10/bin \
+    /opt/local/bin \
+    /opt/local/sbin \
+    $HOME/.cargo/env \
+    $HOME/Rust/nchdr/target/release \
+    $PATH
 
-
-set M_Path /Users/ct6g18/Python/ML_Projects
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 alias vim="nvim"
 
@@ -29,6 +32,8 @@ alias tree="eza --tree"
 alias tlmgr="sudo tlmgr"
 
 alias unimatrix="unimatrix -s 96 -a"
+
+alias inception="ssh -R 9000:localhost:8000 ct1163@gadi.nci.org.au ssh -R 9000:localhost:9000 testing-tunnel.ct1163.tm70.ps.gadi.nci.org.au ssh -L 0.0.0.0:8000:localhost:9000 testing-tunnel.ct1163.tm70.ps.gadi.nci.org.au"
 
 alias vimdiff="vim -d"
 
