@@ -6,8 +6,10 @@
 --
 vim.keymap.del("n", "\\")
 
-vim.keymap.set("n", "<C-j>", ":vertical resize -5<CR>", { desc = "Resize window left" })
-vim.keymap.set("n", "<C-k>", ":vertical resize +5<CR>", { desc = "Resize window right" })
+vim.keymap.set("n", "<C-k>", ":resize -5<CR>", { desc = "Resize window up" })
+vim.keymap.set("n", "<C-j>", ":resize +5<CR>", { desc = "Resize window down" })
+vim.keymap.set("n", "<C-h>", ":vertical resize -5<CR>", { desc = "Resize window left" })
+vim.keymap.set("n", "<C-l>", ":vertical resize +5<CR>", { desc = "Resize window right" })
 
 -- -- buffers
 -- vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Delete buffer" })

@@ -1,3 +1,8 @@
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "copilot-chat" }, -- adjust to your chat buffer's filetype
+  callback = function() vim.b.copilot_enabled = false end,
+})
+
 if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
