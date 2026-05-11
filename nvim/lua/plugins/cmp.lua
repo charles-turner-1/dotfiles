@@ -1,3 +1,5 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 return {
   "hrsh7th/nvim-cmp",
   opts = function(_, opts)
@@ -16,7 +18,7 @@ return {
       ["<S-Tab>"] = nil,
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<C-p>"] = cmp.mapping.select_prev_item(),
-      ["<CR>"] = cmp.mapping.confirm { select = true },
+      ["<S-CR>"] = cmp.mapping.confirm { select = true },
     })
   end,
 }

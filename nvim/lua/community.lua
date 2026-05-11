@@ -10,5 +10,5 @@ return {
   { import = "astrocommunity.pack.lua" },
   -- import/override with your plugins folder
   -- { import = "astrocommunity.pack.python" },
-  { import = "astrocommunity.completion.copilot-lua-cmp" },
+  -- { import = "astrocommunity.completion.copilot-lua-cmp" },
 }

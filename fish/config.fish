@@ -1,27 +1,29 @@
-## gf status is-interactive
-#    Commands to run in interactive sessions can go here
-# end
+# Homebrew first (adds /opt/homebrew/bin etc)
+if test -x /opt/homebrew/bin/brew
+    eval (/opt/homebrew/bin/brew shellenv)
+end
 
-eval (/opt/homebrew/bin/brew shellenv)
+# Explicit personal paths you own
+fish_add_path $HOME/bin
+fish_add_path /usr/local/texlive/2022/bin/universal-darwin
+fish_add_path /Users/ct6g18/Library/Python/3.10/bin
+fish_add_path /opt/local/bin
+fish_add_path /opt/local/sbin
+fish_add_path $HOME/Rust/nchdr/target/release
 
-set -x PATH \
-    $HOME/bin \
-    /usr/local/texlive/2022/bin/universal-darwin \
-    /Users/ct6g18/Library/Python/3.10/bin \
-    /opt/local/bin \
-    /opt/local/sbin \
-    $HOME/.cargo/env \
-    $HOME/Rust/nchdr/target/release \
-    $PATH
+# Pixi LAST so it doesn't override everything
+fish_add_path --append $HOME/.pixi/bin
 
-set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+# Disable virtualenv prompt mangling
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
+if test -f /Users/u1166368/miniforge3/bin/conda
+    eval /Users/u1166368/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+end
 
 alias vim="nvim"
-
 alias ytop="ytop -p"
-
 alias cat="bat"
-
 alias python="python3"
 
 alias ll="eza --long --header --git"
@@ -31,31 +33,20 @@ alias tree="eza --tree"
 
 alias tlmgr="sudo tlmgr"
 
-alias unimatrix="unimatrix -s 96 -a"
-
-alias inception="ssh -R 9000:localhost:8000 ct1163@gadi.nci.org.au ssh -R 9000:localhost:9000 testing-tunnel.ct1163.tm70.ps.gadi.nci.org.au ssh -L 0.0.0.0:8000:localhost:9000 testing-tunnel.ct1163.tm70.ps.gadi.nci.org.au"
-
-alias vimdiff="vim -d"
+alias gg='cd "$(git rev-parse --show-toplevel || echo .)"'
 
 alias code="open -a 'Visual Studio Code'"
-
-alias gg='cd "$(git rev-parse --show-toplevel || echo .)"'
 
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 
 set theme_color_scheme nord
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /Users/u1166368/miniforge3/bin/conda
-    eval /Users/u1166368/miniforge3/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f "/Users/u1166368/miniforge3/etc/fish/conf.d/conda.fish"
-        . "/Users/u1166368/miniforge3/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH "/Users/u1166368/miniforge3/bin" $PATH
-    end
+# Remove any stray .cargo/env entries from PATH
+set -l bad (string match -r ".cargo/env" $PATH)
+if test (count $bad) -gt 0
+    set -gx PATH (string match -rv ".cargo/env" $PATH)
+    echo "Removed .cargo/env from PATH"
 end
-# <<< conda initialize <<<
 
+# Bit of a hack but it fixes conda activation zed and leaves everything else working the same.
+conda activate base

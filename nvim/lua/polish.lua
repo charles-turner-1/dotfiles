@@ -53,7 +53,7 @@ vim.keymap.set("n", "--", "<c-x>", { desc = "Decrement number" })
 -- vim.keymap.set("n", "<leader>fmd", vim.lsp.buf.format)
 --
 -- nvim-comment
-vim.keymap.set({ "n", "v" }, "<C-/>", "gcc", { desc = "Comment/ uncomment line" })
+-- vim.keymap.set({ "n", "v" }, "<C-/>", function() return "gcc" end, { desc = "Comment/ uncomment line" })
 --
 -- Copilot chat
 vim.keymap.set({ "n", "v" }, "<leader>cc", ":CopilotChat<cr>", { desc = "Open Copilot chat" })
