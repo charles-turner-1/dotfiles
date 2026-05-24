@@ -2,8 +2,11 @@ return {
   "zbirenbaum/copilot.lua",
   opts = {
     suggestion = {
-      accept_word = "<C-l>",
       debounce = 150,
+      keymap = {
+        accept = "<Tab>",
+        accept_word = "<C-l>",
+      },
     },
   },
 }
