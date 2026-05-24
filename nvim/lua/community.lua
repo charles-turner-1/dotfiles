@@ -8,6 +8,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.recipes.picker-lsp-mappings" },
   -- import/override with your plugins folder
   -- { import = "astrocommunity.pack.python" },
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
