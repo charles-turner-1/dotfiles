@@ -26,6 +26,20 @@ vim.keymap.set("n", "<leader>cd", ":cd %:p:h<cr>:pwd<cr>")
 -- -- Increment & Decrement numbers
 vim.keymap.set("n", "++", "<c-a>", { desc = "Increment number" })
 vim.keymap.set("n", "--", "<c-x>", { desc = "Decrement number" })
+
+local function linewise_visual_block_edit(key)
+  if vim.fn.mode() ~= "V" then return key end
+  return [=[<Esc>'<0<C-v>'>$]=] .. key
+end
+
+vim.keymap.set("x", "I", function() return linewise_visual_block_edit "I" end, {
+  expr = true,
+  desc = "Insert at start of each selected line",
+})
+vim.keymap.set("x", "A", function() return linewise_visual_block_edit "A" end, {
+  expr = true,
+  desc = "Append to end of each selected line",
+})
 --
 -- -- window management
 -- vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
