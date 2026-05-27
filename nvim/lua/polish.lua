@@ -6,6 +6,8 @@
 --
 vim.keymap.del("n", "\\")
 
+vim.keymap.set("t", [[\<Esc>]], [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
 vim.keymap.set("n", "<C-k>", ":resize -5<CR>", { desc = "Resize window up" })
 vim.keymap.set("n", "<C-j>", ":resize +5<CR>", { desc = "Resize window down" })
 vim.keymap.set("n", "<C-h>", ":vertical resize -5<CR>", { desc = "Resize window left" })
