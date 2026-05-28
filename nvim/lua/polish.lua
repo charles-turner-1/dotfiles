@@ -4,9 +4,46 @@
 -- This is just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
 --
+vim.opt.colorcolumn = { 80, 120 }
+
 vim.keymap.del("n", "\\")
 
 vim.keymap.set("t", [[\<Esc>]], [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
+local function focus_terminal()
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.bo[buf].buftype == "terminal" then
+      vim.api.nvim_set_current_win(win)
+      vim.cmd.startinsert()
+      return
+    end
+  end
+
+  vim.cmd.botright "vsplit"
+  vim.cmd.vertical.resize(80)
+  vim.cmd.terminal()
+  vim.cmd.startinsert()
+end
+
+local function focus_editor()
+  vim.cmd.stopinsert()
+
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.bo[buf].buftype ~= "terminal" then
+      vim.api.nvim_set_current_win(win)
+      return
+    end
+  end
+end
+
+vim.keymap.set({ "n", "t" }, "<C-M-t>", focus_terminal, { desc = "Focus terminal" })
+vim.keymap.set({ "n", "t" }, "<C-M-e>", focus_editor, { desc = "Focus editor" })
+vim.keymap.set({ "n", "t" }, "<Esc><C-t>", focus_terminal, { desc = "Focus terminal" })
+vim.keymap.set({ "n", "t" }, "<Esc><C-e>", focus_editor, { desc = "Focus editor" })
+vim.keymap.set({ "n", "t" }, "<Esc>[116;7u", focus_terminal, { desc = "Focus terminal" })
+vim.keymap.set({ "n", "t" }, "<Esc>[101;7u", focus_editor, { desc = "Focus editor" })
 
 vim.keymap.set("n", "<C-k>", ":resize -5<CR>", { desc = "Resize window up" })
 vim.keymap.set("n", "<C-j>", ":resize +5<CR>", { desc = "Resize window down" })
